@@ -1,5 +1,12 @@
-let container = $(".container")
+const container = $(".container")
+const currentDayDisplay = $("#currentDayDisplay")
 
+// Time
+const currentDay = moment().format("dddd")
+
+currentDayDisplay.text(currentDay)
+
+console.log(currentDay)
 
 //  Creates one time block
 // do this 8 times 
