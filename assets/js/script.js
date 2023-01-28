@@ -4,8 +4,8 @@ const currentDayDisplay = $("#currentDayDisplay")
 // Time
 let myMoment = moment()
 const currentDay = myMoment.format("dddd")
-const currentHour = myMoment.format("H")
-
+// const currentHour = myMoment.format("H")
+let currentHour = 11;
 currentDayDisplay.text(currentDay)
 
 // create row
@@ -54,11 +54,26 @@ for (let i = 0; i < 8; i++){
 
 // populate the time column
 $(".hour").each( function (){
-    let time = myMoment.hour(hourStart).minute("0").second("0").format("h:mm");
+    let time = myMoment.hour(hourStart).minute("0").second("0").format("H:mm");
+    let timeBlock = $(this).next();
     $(this).text(time)
-    $(this).next().attr("data-time", time)
-    $(this).next().attr("id", time)
+    timeBlock.attr("data-time", time)
+    timeBlock.attr("id", time)
+    let timeNum = parseInt(time)
+    
+
+    // logic for past present 
+    if (timeNum === currentHour){
+        timeBlock.css("background-color", "red")
+    }
+    else if (timeNum > currentHour){
+        timeBlock.css("background-color", "green")
+    }
+    else {
+        timeBlock.css("background-color", "grey")
+    }
     hourStart++
+    
 })
 
 // Add Event Listener for each Timeblock
@@ -80,12 +95,7 @@ $('.container').on('click', '.saveBtn', function(event){
         event.preventDefault()
         let hourKey = $(this).prev().prev().text()
         localStorage.setItem(hourKey, $(this).prev().val())
-        // add reference to key
-
 })
-
-
-
 
 // check each time block for local storage
 for (let i = 0; i < localStorage.length; i++){
@@ -94,7 +104,8 @@ for (let i = 0; i < localStorage.length; i++){
     let element = document.getElementById(hourKey)    
     element.value = value
 }
- 
+
+
 
 
 
