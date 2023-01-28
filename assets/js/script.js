@@ -53,9 +53,11 @@ for (let i = 0; i < 8; i++){
 }
 
 // populate the time column
-$(".hour").each( function (index){
-    let dayStart = myMoment.hour(hourStart).minute("0").second("0").format("h:mm");
-    $(this).text(dayStart)
+$(".hour").each( function (){
+    let time = myMoment.hour(hourStart).minute("0").second("0").format("h:mm");
+    $(this).text(time)
+    $(this).next().attr("data-time", time)
+    $(this).next().attr("id", time)
     hourStart++
 })
 
@@ -64,17 +66,36 @@ $(".hour").each( function (index){
 
 // Press Enter to save timeBlock
 $('.container').on('keyup', '.time-block', function(event){
+    event.preventDefault()
     if (event.keyCode === 13) {
         let hourKey = $(this).prev().text()
+
         localStorage.setItem(hourKey, $(this).val())
         
     }  
 })
 
 // Save Button Event
-$('.container').on('click', '.saveBtn', function(){ 
+$('.container').on('click', '.saveBtn', function(event){ 
+        event.preventDefault()
         let hourKey = $(this).prev().prev().text()
         localStorage.setItem(hourKey, $(this).prev().val())
-        console.log(hourKey)
+        // add reference to key
+
 })
+
+
+
+
+// check each time block for local storage
+for (let i = 0; i < localStorage.length; i++){
+    let hourKey = localStorage.key(i)
+    let value = localStorage.getItem(hourKey);
+    let element = document.getElementById(hourKey)    
+    element.value = value
+}
+ 
+
+
+
 
