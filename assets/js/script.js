@@ -2,13 +2,11 @@ const container = $(".container")
 const currentDayDisplay = $("#currentDayDisplay")
 
 // Time
-const currentDay = moment().format("dddd")
-const currentHour = moment().format("H")
-console.log(currentHour)
+let myMoment = moment()
+const currentDay = myMoment.format("dddd")
+const currentHour = myMoment.format("H")
 
 currentDayDisplay.text(currentDay)
-
-
 
 // create row
 const createRow = () => {
@@ -25,7 +23,8 @@ const createRow = () => {
 // do this 8 times 
 
 const createEvent = (appendTo) => {
-    let timeBlock = $("<div>")
+    let timeBlock = $("<input>")
+    timeBlock.attr("type", "text")
     timeBlock.addClass("time-block col-10")
     timeBlock.css("border", "1pt solid red")
     appendTo.append(timeBlock)
@@ -44,18 +43,38 @@ const createSaveBtn = (appendTo) => {
     appendTo.append(saveBtn)
 }
 
-let hourStart = 9;
+let hourStart = 9
+// let dayStart = myMoment.hour(hourStart).minute("0").second("0").format("h:mm");
 
+// console.log(dayStart);
 for (let i = 0; i < 8; i++){
     let newRow = createRow()
     container.append(newRow)
-    
-
 }
 
-console.log($(".hour"));
-
+// populate the time column
 $(".hour").each( function (index){
-    $(this).text(hourStart)
+    let dayStart = myMoment.hour(hourStart).minute("0").second("0").format("h:mm");
+    $(this).text(dayStart)
     hourStart++
 })
+
+// Add Event Listener for each Timeblock
+// that allows an input field to then save in local storage 
+
+// Press Enter to save timeBlock
+$('.container').on('keyup', '.time-block', function(event){
+    if (event.keyCode === 13) {
+        let hourKey = $(this).prev().text()
+        localStorage.setItem(hourKey, $(this).val())
+        
+    }  
+})
+
+// Save Button Event
+$('.container').on('click', '.saveBtn', function(){ 
+        let hourKey = $(this).prev().prev().text()
+        localStorage.setItem(hourKey, $(this).prev().val())
+        console.log(hourKey)
+})
+
