@@ -3,10 +3,12 @@ const currentDayDisplay = $("#currentDayDisplay")
 
 // Time
 const currentDay = moment().format("dddd")
+const currentHour = moment().format("H")
+console.log(currentHour)
 
 currentDayDisplay.text(currentDay)
 
-console.log(currentDay)
+
 
 // create row
 const createRow = () => {
@@ -14,7 +16,7 @@ const createRow = () => {
     row.addClass("row")
     row.css("border", "3pt solid orange")
     createHour(row)
-    createTimeBlock(row)
+    createEvent(row)
     createSaveBtn(row)
     return row
 }
@@ -22,16 +24,16 @@ const createRow = () => {
 //  Creates one time block
 // do this 8 times 
 
-const createTimeBlock = (appendTo) => {
+const createEvent = (appendTo) => {
     let timeBlock = $("<div>")
-    timeBlock.addClass("hour time-block col-10")
+    timeBlock.addClass("time-block col-10")
     timeBlock.css("border", "1pt solid red")
     appendTo.append(timeBlock)
 }
 
 const createHour = (appendTo) => {
     let hour = $("<div>")
-    hour.addClass("hour col-1")
+    hour.addClass("hour col-1 text-center justify-center align-center")
     hour.css("border", "3pt solid blue")
     appendTo.append(hour)
 }
@@ -42,9 +44,18 @@ const createSaveBtn = (appendTo) => {
     appendTo.append(saveBtn)
 }
 
-// for (let i = 0; i < 8; i++){
-//     container.append();
-// }
+let hourStart = 9;
 
-let newRow = createRow()
-container.append(newRow)
+for (let i = 0; i < 8; i++){
+    let newRow = createRow()
+    container.append(newRow)
+    
+
+}
+
+console.log($(".hour"));
+
+$(".hour").each( function (index){
+    $(this).text(hourStart)
+    hourStart++
+})
