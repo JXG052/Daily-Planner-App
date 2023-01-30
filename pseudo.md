@@ -26,6 +26,8 @@ ON Start:
     Page shows past blocks in red, future blocks in green
     I can enter an input into the blocks and save it.
 
+Change Local storage so that it refreshes if day is different
+
 
 
 
