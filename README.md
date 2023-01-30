@@ -1,101 +1,35 @@
-# Third-Party APIs: Work Day Scheduler
+# Daily Planner App
 
-## Your Task
+## Description
 
-Create a stylish calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery and using moment.js
+My motivation for this challenge was to gain a better understanding as to how to use dates and times in Javascript with the moment() API. It was also my first time using jquery and therefore I wanted to try and generate most of the elements dynamically. 
 
-The app should:
+## Table of Contents
 
-* Display the current day at the top of the calender when a user opens the planner.
- 
-* Present timeblocks for standard business hours when the user scrolls down.
- 
-* Color-code each timeblock based on past, present, and future when the timeblock is viewed.
- 
-* Allow a user to enter an event when they click a timeblock
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
 
-* Save the event in local storage when the save button is clicked in that timeblock.
+## Installation
 
-* Persist events between refreshes of a page
+n/a
 
+## Usage
+Open the page. 
+Past is colour coded grey, present red, future green. 
+You can save an appointment by pressing enter or clicking the save button.
 
+![image of what the page looks like with password](assets/images/screenshot.png)
 
-## User Story
+[Link to page](https://jxg052.github.io/Daily-Planner-App/)
 
-```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
- 
-## Acceptance Criteria
+## Credits
 
-The app should:
+Thanks to edx bootcamp team for providing starter code, DOM links, unwritten functions and mockup.
 
-* Display the current day at the top of the calender when a user opens the planner.
- 
-* Present timeblocks for standard business hours when the user scrolls down.
- 
-* Color-code each timeblock based on past, present, and future when the timeblock is viewed.
- 
-* Allow a user to enter an event when they click a timeblock
+## License
 
-* Save the event in local storage when the save button is clicked in that timeblock.
+MIT License
 
-* Persist events between refreshes of a page
-
-The following animation demonstrates the application functionality:
-
-![A user clicks on slots on the color-coded calendar and edits the events.](./images/05-third-party-apis-homework-demo.gif)
-
-
-## Grading Requirements
-
-This homework is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-  * Uses a date utility library to work with date and time
-
-### Deployment: 32%
-
-* Application deployed at live URL
-
-* Application loads with no errors
-
-* Application GitHub URL submitted
-
-* GitHub repo contains application code
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate
-
-* Application user interface style is clean and polished
-
-* Application resembles the mock-up functionality provided in the homework instructions
-
-### Repository Quality: 13%
-
-* Repository has a unique name
-
-* Repository follows best practices for file structure and naming conventions
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages
-
-* Repository contains quality README file with description, screenshot, and link to deployed application
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Copyright (c) 2022 JXG052
