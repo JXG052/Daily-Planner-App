@@ -5,8 +5,8 @@ const currentDayDisplay = $("#currentDayDisplay")
 const myMoment = moment()
 const date = myMoment.format("MMMM Do YYYY")
 const currentDay = myMoment.format("dddd")
-const currentHour = myMoment.format("H")
-
+// const currentHour = myMoment.format("H")
+const currentHour = 11
 // let currentHour = 11;
 currentDayDisplay.text(`${currentDay}, ${date}`)
 
@@ -18,7 +18,6 @@ let loadedObj = JSON.parse(localStorage.getItem(date))
 const createRow = () => {
     let row = $("<div>")
     row.addClass("row")
-    row.css("border", "3pt solid orange")
     createHour(row)
     createEvent(row)
     createSaveBtn(row)
@@ -31,21 +30,19 @@ const createRow = () => {
 const createEvent = (appendTo) => {
     let timeBlock = $("<input>")
     timeBlock.attr("type", "text")
-    timeBlock.addClass("time-block col-10")
-    timeBlock.css("border", "1pt solid red")
+    timeBlock.addClass("time-block col-10 textArea")
     appendTo.append(timeBlock)
 }
 
 const createHour = (appendTo) => {
     let hour = $("<div>")
     hour.addClass("hour col-1 text-center justify-center align-center")
-    hour.css("border", "3pt solid blue")
     appendTo.append(hour)
 }
 const createSaveBtn = (appendTo) => {
-    let saveBtn = $("<button>");
+    let saveBtn = $("<button><i class='fas fa-save'></i></button>");
     saveBtn.addClass("saveBtn col-1")
-    saveBtn.css("border", "1pt solid green")
+    
     appendTo.append(saveBtn)
 }
 
@@ -69,13 +66,13 @@ $(".hour").each( function (){
 
     // logic for past present 
     if (timeNum == currentHour){
-        timeBlock.css("background-color", "red")
+        timeBlock.addClass("present")
     }
     else if (timeNum > currentHour){
-        timeBlock.css("background-color", "green")
+        timeBlock.addClass("future")
     }
     else {
-        timeBlock.css("background-color", "grey")
+        timeBlock.addClass("past")
     }
     hourStart++
     
