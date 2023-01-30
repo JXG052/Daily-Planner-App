@@ -5,8 +5,8 @@ const currentDayDisplay = $("#currentDayDisplay")
 const myMoment = moment()
 const date = myMoment.format("MMMM Do YYYY")
 const currentDay = myMoment.format("dddd")
-// const currentHour = myMoment.format("H")
-const currentHour = 11
+const currentHour = myMoment.format("H")
+// const currentHour = 11
 // let currentHour = 11;
 currentDayDisplay.text(`${currentDay}, ${date}`)
 
